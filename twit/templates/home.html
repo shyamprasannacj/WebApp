@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<head> 
+</head>
+<style>
+	:root {
+	 --base-color: rgba(255, 255, 255, 1);
+	 --hover-color:#226fbe;
+}
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon.eot');
+	src:url('../fonts/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.woff') format('woff'),
+		url('../fonts/icomoon/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+
+}
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+ body {
+	 height: 100vh;
+	 overflow: hidden;
+	 display: flex;
+	 flex-wrap: wrap;
+	 font-family: 'Anton', sans-serif;
+	 background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+ .horizontal {
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 position: absolute;
+	 width: 270px;
+	 height: 50px;
+	 margin: 10px;
+	 border: 3px solid var(--base-color);
+	 font-size: 2rem;
+	 cursor: pointer;
+}
+ .horizontal > .text {
+	 position: relative;
+	 color: transparent;
+	 background-image: linear-gradient(90deg, var(--hover-color) 0%, var(--hover-color) 50%, var(--base-color) 50%, var(--base-color) 100%);
+	 background-repeat: repeat;
+	 background-size: 200%;
+	 background-position: 100% 0;
+	 -webkit-background-clip: text;
+	 background-clip: text;
+	 transition: background-position 300ms;
+}
+ .horizontal::before {
+	 content: '';
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 background: var(--base-color);
+	 transform-origin: 100% 0;
+	 transform: scale3d(0, 1, 1);
+	 transition: transform 300ms;
+}
+ .horizontal:hover .text {
+	 background-position: 0 0;
+}
+ .horizontal:hover::before {
+	 transform-origin: 0 0;
+	 transform: scale3d(1, 1, 1);
+}
+ 
+.form__group {
+	 position: relative;
+	 padding: 15px 0 0;
+	 margin-top: 10px;
+	 width: 50%;
+}
+ .form__field {
+	 font-family: inherit;
+	 width: 100%;
+	 border: 0;
+	 border-bottom: 2px solid #9b9b9b;;
+	 outline: 0;
+	 font-size: 1.3rem;
+	 color: #fff;
+	 padding: 7px 0;
+	 background: transparent;
+	 transition: border-color 0.2s;
+}
+ .form__field::placeholder {
+	 color: transparent;
+}
+ .form__field:placeholder-shown ~ .form__label {
+	 font-size: 1.3rem;
+	 cursor: text;
+	 top: 20px;
+}
+ .form__label {
+	 position: absolute;
+	 top: 0;
+	 display: block;
+	 transition: 0.2s;
+	 font-size: 1rem;
+	 color: #9b9b9b;
+}
+ .form__field:focus {
+	 padding-bottom: 6px;
+	 font-weight: 700;
+	 border-width: 3px;
+	 border-image: linear-gradient(to right,#226fbe, #38ef7d);
+	 border-image-slice: 1;
+}
+ .form__field:focus ~ .form__label {
+	 position: absolute;
+	 top: 0;
+	 transition: 0.2s;
+	 font-size: 1rem;
+	 color: #226fbe;
+	 font-weight: 700;
+}
+ .form__field:required, .form__field:invalid {
+	 box-shadow: none;
+}
+ a.button3{
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#4eb5f1;
+ text-align:center;
+ transition: all 0.2s;
+}
+a.button3:hover{
+ background-color:#4095c6;
+}
+@media all and (max-width:30em){
+ a.button3{
+  display:block;
+  margin:0.2em auto;
+ }
+}
+.btn-6 {
+	color: #11998e;
+	background: #11998e;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+
+.btn-6:active {
+	top: 2px;
+}
+
+/* Button 6a */
+.btn-6a {
+	border: 4px solid #11998e;
+}
+
+.btn-6a:hover {
+	background: transparent;
+	color:#11998e;
+}
+
+/* Button 6b */
+.btn-6b {
+	border: 4px solid #11998e;
+	border-radius: 15px;
+}
+
+.btn-6b:hover {
+	background: transparent;
+	color: #11998e;
+}
+
+</style>
+	<body>
+		  <form method="get" action="add">
+		<div class="form__group field" style="position: absolute;">
+  <input type="input" class="form__field" placeholder="Name" name="name" id='name'  autocomplete='off' spellcheck="false" required />
+  <label for="name" class="form__label"  >UserName</label>
+    <input type="input" class="form__field" placeholder="Name" name="tags" id='tags'  autocomplete='off' spellcheck="false" hidden/>
+  <label for="name" class="form__label"  ></label>
+<div>
+  <label for="name" class="form__label" style="top:120px;left:10px;">Select the topics you want content on:</label></div>
+{% csrf_token %} 
+<input type="submit"  style="top:570px;left:1200px;height:50px;position: absolute;width:100px ">Finish</input>		
+<a class="horizontal" onclick='get_span(this)'  style="top:170px;left:100px;" id="Marketing" name="deselect"  >
+	<span class="text"  >Marketing</span></a>
+<a class="horizontal" onclick='get_span(this)'  style="top:170px;left:600px;" id="Sports" name="deselect">
+	<span class="text"  >Sports</span></a>
+<a class="horizontal" onclick='get_span(this)'  style="top:170px;left:1100px;" id="Careers" name="deselect">
+	<span class="text"  >Careers</span></a>
+<a class="horizontal" onclick='get_span(this)'  style="top:270px;left:100px;" id="Designing" name="deselect">
+	<span class="text"  >Designing</span></a>
+<a class="horizontal" onclick='get_span(this)'  style="top:270px;left:600px;" id="Entrepreneurship" name="deselect">
+	<span class="text"  >Entrepreneurship</span></a>
+
+<a class="horizontal" onclick='get_span(this)'  style="top:270px;left:1100px;" id="Gaming" name="deselect">
+	<span class="text" >Gaming</span></a>
+
+<a class="horizontal" onclick='get_span(this)'  style="top:370px;left:100px;" id="Entertainment" name="deselect">
+	<span class="text" >Entertainment</span></a>
+
+<a class="horizontal" onclick='get_span(this)'  style="top:370px;left:600px;" id="News" name="deselect">
+	<span class="text" >News</span></a>
+<a class="horizontal" onclick='get_span(this)'  style="top:370px;left:1100px;" id="Technology" name="deselect">
+	<span class="text" >Technology</span></a>
+
+<a class="horizontal" onclick='get_span(this)'  style="top:470px;left:100px;" id="Travel" name="deselect">
+	<span class="text" >Travel</span></a>
+
+<a class="horizontal" onclick='get_span(this)'  style="top:470px;left:600px;" id="Fitness" name="deselect">
+	<span class="text" >Fitness</span></a>
+
+<a class="horizontal" onclick='get_span(this)'  style="top:470px;left:1100px;" id="Music" name="deselect">
+	<span class="text" >Music</span></a>
+
+
+	</form>
+</div>
+
+				
+<script type="text/javascript">
+  let get_span = (ele) => {
+    	console.log(ele.id);
+    	var x=document.getElementById('tags');
+    	if (ele.name=="deselect"){
+    		ele.style.background="#226fbe";
+    		ele.name="select";
+    		x.value+=ele.id;
+
+
+    		 }
+    	else if(ele.name=="select"){
+    		ele.style.background=" radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)";
+    		ele.name="deselect";
+    		console.log(x.value);
+    		var str = x.value;
+			var res = str.replace(ele.id, "");
+    		x.value=res;
+    		console.log(x.value);
+    	}
+    }
+</script>		
+	</body>
+</html>
