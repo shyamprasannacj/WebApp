@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import tweepy
 import pandas as pd
-from PIL import Image, ImageDraw
 consumer_key ='c2TJKoMkL8KQxCVObTQWrNRHD'
 consumer_secret ='Trie1n70yxYtihjA3hj8adWjS7VplJnLVOhNkj8xbHqXl0tvCQ'
 access_token ='1386722037629030402-rGEFt594dO9bfErkyuliKNv3Hbyz0P'
@@ -16,7 +15,6 @@ tweets=[]
 likes=[]
 time=[]
 s=[]
-img = Image.new('RGB', (100, 30), color = (73, 109, 137))
 # Create your views here.
 def home (request):
     return render(request,'home.html');
